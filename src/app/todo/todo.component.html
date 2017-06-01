@@ -1,0 +1,5 @@
+<input type="text" name="txtTodo" [(ngModel)]="todoItem" /> 
+<input type='submit' name='btnAddTodo' value='Add Todo' (click)="add()" />
+<ul class="todoList">
+  <li class="todoListItem" *ngFor="let todo of todos"> {{ todo }}</li>
+</ul>

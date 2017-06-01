@@ -11,4 +11,4 @@ describe('ng-test-proj App', () => {
     page.navigateTo();
     expect(page.getParagraphText()).toEqual('app works!');
   });
-});
+});  
