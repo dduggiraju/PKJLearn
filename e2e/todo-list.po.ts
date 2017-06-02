@@ -4,9 +4,11 @@ import { promise } from "@types/selenium-webdriver";
 export class TodoListPage {
     constructor() {
     }
+
     navigateTo() {
         return browser.get('todos');
     }
+
     getTodoList(): string[] {
         let list: string[] = [];
         element.all(by.css('todoListItem')).each((e: ElementFinder, i: Number) => {
@@ -14,6 +16,7 @@ export class TodoListPage {
         });
         return list;
     }
+
     saveNewTodo(itemText: string = 'a comment') {
         // add new item to list
         let elements = element.all(by.name('txtTodo'));
@@ -24,5 +27,17 @@ export class TodoListPage {
 
     getLastTodoItem(): promise.Promise<string> {
         return element.all(by.css('.todoListItem')).last().getText();
+    }
+
+    likeTodoItem() {
+        let listElement = element.all(by.css('.todoListItem')).last();
+        listElement.all(by.buttonText('Like!')).click();
+    }
+    getLikeNumber() {
+        let listElement = element.all(by.css('.todoListItem')).last();
+        return listElement.element(by.id('likeCount')).getText();
+    }
+    getTodoTextValue() {
+        return element(by.name('txtTodo')).getText();
     }
 }

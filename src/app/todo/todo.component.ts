@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TodoItem } from 'app/todo/todoItem';
 
 @Component({
   selector: 'app-todo',
@@ -7,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoComponent implements OnInit {
 
-  todos: string[];
-  todoItem: string;
+  todos: TodoItem[];
+  todoItemText: string;
   constructor() {
     this.todos = [];
   }
@@ -17,6 +18,13 @@ export class TodoComponent implements OnInit {
   }
 
   add() {
-    this.todos.push(this.todoItem);
+    let todoItem = new TodoItem();
+    todoItem.TodoText = this.todoItemText;
+    todoItem.LikeCount = 0;
+    this.todos.push(todoItem);
+    this.todoItemText = '';
+  }
+  like(todoItem: TodoItem) {
+    todoItem.LikeCount++;
   }
 }

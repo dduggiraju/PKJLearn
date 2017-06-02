@@ -20,19 +20,19 @@ describe('TodoComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
   it('should create the todo page', () => {
     expect(component).toBeTruthy();
   });
 
   describe('When I add a todo item', () => {
     beforeEach(() => {
-      component.todoItem = 'any comment';
+      component.todoItemText = 'any comment';
       component.add();
     });
-    it('should then be added to list', () => {
-      expect(component.todos[0]).toBe('any comment');
-    });
-  });
   
-
+    it('should then be added to list', () => {
+      expect(component.todos[0].TodoText).toBe('any comment');
+    });
+  });   
 });

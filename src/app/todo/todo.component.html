@@ -1,5 +1,9 @@
-<input type="text" name="txtTodo" [(ngModel)]="todoItem" /> 
+<input type="text" name="txtTodo" [(ngModel)]="todoItemText" />
 <input type='submit' name='btnAddTodo' value='Add Todo' (click)="add()" />
 <ul class="todoList">
-  <li class="todoListItem" *ngFor="let todo of todos"> {{ todo }}</li>
+  <li class="todoListItem" *ngFor="let todo of todos">
+    <span class='todoText'> {{ todo.TodoText }} </span>
+    <input type='button' name='btnAddTodo' value='Like!' (click)="like(todo)"/>
+    <span id='likeCount'> {{ todo.LikeCount }}</span>
+  </li>
 </ul>
